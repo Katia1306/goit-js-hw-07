@@ -28,44 +28,4 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 console.log(galleryItems);
 
-/*
-const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-    close: false,
-    enableKeyboard: true
-});
 
-/*
-listEl.insertAdjacentHTML("beforeend", typset);
-const modalOpen = (event) => {
-    event.preventDefault();
-    if (!event.target.classList.contains('gallery__image')) {
-        console.log('NEpraça');
-        return;
-    }
-    const clickedImageAlt = event.target.getAttribute('alt');
-    const clickedImageSrc = event.target.dataset.source;
-    const instance = basicLightbox.create(
-        `<img src='${clickedImageSrc}' alt='${clickedImageAlt}'/>`, {
-            onShow: (instance) => {
-                document.addEventListener('keydown', modalClose);
-            },
-            onClose: (instance) => {
-                document.removeEventListener('keydown', modalClose);
-                instance = null;
-            },
-            modalClose: (event) => {
-             if (event.key !== 'Escape') {
-                 return;
-             }
-            instance.close();
-            }
-             });
-    instance.show();
-};
-
-
-listEl.addEventListener('click', (event) => {
-    modalOpen(event);
-});
