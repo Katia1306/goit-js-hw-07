@@ -5,6 +5,7 @@ const typset = galleryItems.map(({ preview, original, description }) => {
     return `<li class="gallery__item">
         <a class="gallery__link" href="${original}">
             <img
+                loading = "lazy"
                 class="gallery__image"
                 src="${preview}"
                 data-source="${original}"
@@ -30,18 +31,21 @@ const modalOpen = (event) => {
             onClose: (instance) => {
                 document.removeEventListener('keydown', modalClose);
                 instance = null;
+            },
+            modalClose: (event) => {
+             if (event.key !== 'Escape') {
+                 return;
+             }
+            instance.close();
             }
-        });
+             });
     instance.show();
 };
-const modalClose = (event) => {
-    if (event.key !== 'Escape') {
-        return;
-    }
-    instance.close();
-};
-document.addEventListener('keydown', modalClose);
+
+
 listEl.addEventListener('click', (event) => {
     modalOpen(event);
 });
+
+
 
